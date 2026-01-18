@@ -1,7 +1,6 @@
-
 import React, { useState } from 'react';
 import { useSite } from '../context/SiteContext';
-import { Waves, Utensils, Wifi, Users, MapPin, Shield, Car, ArrowRight, Maximize2, Coffee, Camera, Eye, X, Check } from 'lucide-react';
+import { Waves, Utensils, Wifi, Users, MapPin, Shield, Car, ArrowRight, Maximize2, Coffee, Camera, Eye, X, Check, Mail, Phone } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Room } from '../types';
 
@@ -103,66 +102,105 @@ export const Villa: React.FC = () => {
         </div>
       </section>
 
+      {/* Villa Location & Contact Info Section - NEW */}
+      <section className="py-24 bg-[#0a0a0a]">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="bg-[#111] rounded-[3rem] border border-white/5 p-12 md:p-20 luxury-shadow reveal overflow-hidden relative">
+            <div className="absolute top-0 right-0 w-96 h-96 bg-[#C5A059]/5 blur-[100px] rounded-full"></div>
+            <div className="grid md:grid-cols-2 gap-16 md:gap-24 relative z-10">
+              <div className="space-y-10">
+                <div>
+                  <h4 className="text-[#C5A059] uppercase tracking-[0.6em] font-black text-[9px] mb-6">The Sanctuary Details</h4>
+                  <h2 className="text-4xl md:text-5xl serif text-white leading-tight">Mandodari Villa <br /><span className="italic font-medium text-[#C5A059]">Private Retreat.</span></h2>
+                </div>
+                
+                <div className="space-y-8">
+                  <div className="flex gap-6 items-start">
+                    <MapPin className="text-[#C5A059] shrink-0 w-6 h-6" strokeWidth={1.5} />
+                    <div>
+                      <p className="text-white text-lg font-bold serif mb-2">Sanctuary Address</p>
+                      <p className="text-stone-400 font-light leading-relaxed">395/12 A Mudhitha Mawatha, Anuradhapura 50000, Sri Lanka</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex gap-6 items-start">
+                    <Mail className="text-[#C5A059] shrink-0 w-6 h-6" strokeWidth={1.5} />
+                    <div>
+                      <p className="text-white text-lg font-bold serif mb-2">Inquiry Portal</p>
+                      <p className="text-stone-400 font-light underline decoration-[#C5A059]/30 underline-offset-4">bevaryguest@gmail.com</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-[#161616] p-10 md:p-14 rounded-[2rem] border border-white/5">
+                <h4 className="text-[#C5A059] uppercase tracking-[0.4em] font-black text-[9px] mb-8 text-center">Concierge Hotlines</h4>
+                <div className="space-y-8">
+                  {[
+                    { label: 'Primary Contact', number: '070 570 5060' },
+                    { label: 'Guest Relations', number: '071 754 9380' },
+                    { label: 'Private Bookings', number: '071 322 3525' }
+                  ].map((phone, idx) => (
+                    <div key={idx} className="flex justify-between items-center border-b border-white/5 pb-6 last:border-0 last:pb-0 group">
+                      <span className="text-stone-500 text-[10px] font-black uppercase tracking-widest">{phone.label}</span>
+                      <a href={`tel:${phone.number.replace(/\s/g, '')}`} className="text-white font-bold text-xl serif group-hover:text-[#C5A059] transition-colors">{phone.number}</a>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* REFINED: Room Section (The Mandodari Sanctuary) */}
       <section className="py-24 md:py-56 bg-[#0a0a0a]">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-20 md:mb-40 reveal">
              <h4 className="text-[#C5A059] uppercase tracking-[0.6em] font-black text-[9px] mb-6 md:mb-8">Accommodations</h4>
-             <h2 className="text-4xl md:text-6xl lg:text-[8rem] font-bold serif text-white italic leading-none tracking-tighter">The Sanctuary</h2>
-             <p className="text-stone-500 max-w-2xl mx-auto mt-8 md:mt-12 font-light text-base md:text-xl leading-relaxed">
-               Each suite at Mandodari Villa is a private world of tranquility. Designed with curated materials and an eye for timeless aesthetics.
-             </p>
+             <h2 className="text-4xl md:text-7xl lg:text-9xl font-bold serif text-white leading-[0.9] tracking-tighter">The Mandodari <br /><span className="italic text-[#C5A059] font-medium">Sanctuary.</span></h2>
           </div>
-          
-          <div className="grid md:grid-cols-2 gap-12 md:gap-24">
-            {rooms.map((room, idx) => (
-              <div key={room.id} className="reveal stagger-1 group flex flex-col space-y-10">
-                <div className="w-full relative">
-                  <div className="aspect-[16/10] overflow-hidden rounded-[2rem] md:rounded-[3rem] luxury-shadow bg-stone-900 photo-glow">
-                    <img 
-                      src={room.image} 
-                      className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105" 
-                      alt={room.name}
-                    />
+
+          <div className="grid gap-20 md:gap-40">
+            {rooms.map((room, i) => (
+              <div key={room.id} className={`flex flex-col ${i % 2 !== 0 ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-12 md:gap-24 items-center reveal`}>
+                <div className="lg:w-1/2 relative group">
+                  <div className="aspect-[16/10] overflow-hidden rounded-[2rem] md:rounded-[4rem] luxury-shadow photo-glow bg-stone-900">
+                    <img src={room.image} className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105" alt={room.name} />
+                  </div>
+                  <div className="absolute top-10 left-10 flex gap-2">
+                    <span className="bg-black/40 backdrop-blur-md px-6 py-2 rounded-full text-[8px] font-black uppercase tracking-widest text-white border border-white/10">0{i+1}</span>
                   </div>
                 </div>
                 
-                <div className="w-full space-y-6 md:space-y-10 px-4">
-                  <div className="space-y-4">
-                    <div className="flex items-center gap-4">
-                      <span className="text-[#C5A059] text-[10px] font-black uppercase tracking-[0.4em]">Collection No. 0{idx + 1}</span>
-                    </div>
-                    <h3 className="text-3xl md:text-5xl font-bold serif text-white leading-tight">{room.name}</h3>
-                    <p className="text-stone-500 text-lg font-light leading-relaxed">{room.description}</p>
+                <div className="lg:w-1/2 space-y-8 md:space-y-12">
+                  <div className="space-y-6">
+                    <h3 className="text-3xl md:text-5xl lg:text-6xl font-bold serif text-white">{room.name}</h3>
+                    <p className="text-stone-500 text-lg md:text-xl font-light italic leading-relaxed">
+                      "{room.description}"
+                    </p>
                   </div>
 
-                  <div className="grid grid-cols-2 gap-x-8 gap-y-4 border-y border-white/5 py-8">
-                    {room.amenities.map(a => (
-                      <div key={a} className="flex items-center gap-3">
-                         <div className="w-1 h-1 bg-[#C5A059] rounded-full"></div>
-                         <span className="text-stone-400 text-[9px] md:text-[10px] font-black uppercase tracking-widest">
-                           {a}
-                         </span>
+                  <div className="grid grid-cols-2 gap-6 md:gap-10">
+                    {room.amenities.map((a, idx) => (
+                      <div key={idx} className="flex items-center gap-4 group">
+                        <div className="w-1.5 h-1.5 rounded-full bg-[#C5A059] group-hover:scale-150 transition-transform"></div>
+                        <span className="text-[10px] md:text-xs font-black uppercase tracking-widest text-stone-400 group-hover:text-white transition-colors">{a}</span>
                       </div>
                     ))}
                   </div>
 
-                  <div className="pt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-8">
+                  <div className="pt-8 md:pt-12 flex items-center justify-between border-t border-white/5">
                     <div>
-                      <p className="text-[#C5A059] text-3xl font-bold serif">LKR {room.price.toLocaleString()}</p>
-                      <p className="text-[10px] font-black text-stone-600 uppercase tracking-widest mt-2">Per Night / Inclusive of Taxes</p>
+                      <p className="text-stone-600 text-[10px] font-black uppercase tracking-widest mb-2">Private Rate</p>
+                      <p className="text-[#C5A059] text-3xl md:text-4xl font-bold serif">LKR {room.price.toLocaleString()}</p>
                     </div>
-                    <div className="flex flex-col sm:flex-row items-center gap-6">
-                      <button 
-                        onClick={() => setSelectedRoom(room)}
-                        className="text-[#C5A059] text-[8px] font-black uppercase tracking-[0.3em] border-b border-[#C5A059]/30 pb-1 hover:border-white hover:text-white transition-all w-fit"
-                      >
-                        View Full Specs
-                      </button>
-                      <Link to="/booking" className="glow-button bg-white text-black px-10 py-4 rounded-full font-black uppercase tracking-widest text-[10px] hover:bg-[#C5A059] transition-all shadow-2xl text-center w-full sm:w-auto">
-                        Book Suite
-                      </Link>
-                    </div>
+                    <Link 
+                      to="/booking" 
+                      className="glow-button bg-white text-black px-10 md:px-14 py-4 md:py-6 rounded-full font-black uppercase tracking-widest text-[10px] shadow-2xl hover:bg-[#C5A059] transition-all"
+                    >
+                      Book Suite
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -172,12 +210,12 @@ export const Villa: React.FC = () => {
       </section>
 
       {/* Visual Poetry Gallery Preview */}
-      <section className="py-16 md:py-32 bg-[#0D0D0D]">
+      <section className="py-24 md:py-48 bg-[#0D0D0D]">
         <div className="max-w-[1800px] mx-auto px-6">
           <div className="flex flex-col md:flex-row justify-between items-center mb-16 md:mb-24 reveal">
             <div>
               <h4 className="text-[#C5A059] uppercase tracking-[0.6em] font-black text-[9px] mb-6">Atmosphere</h4>
-              <h2 className="text-4xl md:text-7xl serif text-white leading-tight">Visual <span className="italic text-[#C5A059] font-medium">Poetry.</span></h2>
+              <h2 className="text-4xl md:text-7xl serif text-white leading-tight">Estate <span className="italic text-[#C5A059] font-medium">Glimpses.</span></h2>
             </div>
             <Link to="/gallery" className="mt-8 md:mt-0 glow-button inline-flex items-center gap-4 bg-white/5 border border-white/10 text-white px-10 py-4 rounded-full font-black uppercase tracking-[0.3em] text-[9px] hover:bg-[#C5A059] hover:text-black transition-all duration-700">
                <Camera size={14} /> View All Moments
@@ -203,82 +241,6 @@ export const Villa: React.FC = () => {
           </div>
         </div>
       </section>
-
-      {/* Rest of Villa Modal Overlay unchanged */}
-      {selectedRoom && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-10 animate-in fade-in duration-500">
-          <div 
-            className="absolute inset-0 bg-black/90 backdrop-blur-2xl cursor-pointer" 
-            onClick={() => setSelectedRoom(null)}
-          ></div>
-          
-          <div className="relative bg-[#0D0D0D] w-full max-w-6xl max-h-[90vh] overflow-y-auto rounded-[3rem] border border-white/10 luxury-shadow flex flex-col md:flex-row animate-in zoom-in slide-in-from-bottom-10 duration-700">
-            <button 
-              onClick={() => setSelectedRoom(null)}
-              className="absolute top-8 right-8 z-[110] text-stone-400 hover:text-white transition-colors"
-            >
-              <X size={32} strokeWidth={1.5} />
-            </button>
-
-            {/* Left: Visual Content */}
-            <div className="md:w-[45%] h-[400px] md:h-auto shrink-0 relative">
-              <img 
-                src={selectedRoom.image} 
-                className="w-full h-full object-cover" 
-                alt={selectedRoom.name} 
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-              <div className="absolute bottom-10 left-10">
-                <p className="text-[#C5A059] text-[10px] font-black tracking-[0.4em] uppercase mb-2">Signature Asset</p>
-                <h2 className="text-4xl font-bold serif text-white italic">{selectedRoom.name}</h2>
-              </div>
-            </div>
-
-            {/* Right: Detailed Content */}
-            <div className="p-10 md:p-20 flex-grow space-y-12">
-              <div className="space-y-6">
-                <h4 className="text-[#C5A059] uppercase tracking-[0.6em] font-black text-[9px]">Technical Specifications</h4>
-                <p className="text-stone-400 text-lg md:text-xl font-light leading-relaxed italic">
-                  "{selectedRoom.description}"
-                </p>
-              </div>
-
-              <div className="grid grid-cols-2 gap-8 py-8 border-y border-white/5">
-                <div>
-                  <p className="text-stone-500 text-[9px] uppercase tracking-widest font-black mb-2">Max Occupancy</p>
-                  <p className="text-white text-xl font-bold serif">{selectedRoom.capacity} Elite Guests</p>
-                </div>
-                <div>
-                  <p className="text-stone-500 text-[9px] uppercase tracking-widest font-black mb-2">Pricing Standard</p>
-                  <p className="text-[#C5A059] text-xl font-bold serif">LKR {selectedRoom.price.toLocaleString()} <span className="text-[10px] text-stone-600">/ Night</span></p>
-                </div>
-              </div>
-
-              <div className="space-y-8">
-                <h4 className="text-white uppercase tracking-[0.4em] font-black text-[10px]">Included Amenities</h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-12">
-                  {selectedRoom.amenities.map((amenity, idx) => (
-                    <div key={idx} className="flex items-center gap-4 group">
-                      <div className="w-2 h-2 rounded-full bg-[#C5A059] shadow-lg shadow-[#C5A059]/20 group-hover:scale-125 transition-transform"></div>
-                      <span className="text-stone-400 text-[11px] font-black uppercase tracking-widest group-hover:text-white transition-colors">{amenity}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="pt-8">
-                <Link 
-                  to="/booking"
-                  onClick={() => setSelectedRoom(null)}
-                  className="glow-button w-full bg-[#C5A059] text-black py-6 rounded-full font-black uppercase tracking-[0.4em] text-[10px] shadow-2xl transition-all"
-                >
-                  Request Reservation
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 };

@@ -94,7 +94,7 @@ export const SiteProvider: React.FC<{ children: React.ReactNode }> = ({ children
       description: 'Aromatic rice served with tender, seasoned chicken, gently cooked for deep flavor.',
       price: 2800,
       category: 'Rice',
-      image: 'https://images.unsplash.com/photo-1546539782-6fc531453083?auto=format&fit=crop&q=80&w=800'
+      image: 'https://static.wixstatic.com/media/7d8c70_b2b20de1df88490e91d06e85c4903bae~mv2.jpg/v1/fill/w_980,h_1225,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/7d8c70_b2b20de1df88490e91d06e85c4903bae~mv2.jpg'
     },
     {
       id: 'r3',
@@ -165,16 +165,16 @@ export const SiteProvider: React.FC<{ children: React.ReactNode }> = ({ children
     // Salads
     {
       id: 's1',
-      name: 'Heirloom Tomato & Buffalo Curd',
-      description: 'Organic heritage tomatoes, local buffalo curd, micro-basil, and a balsamic gold reduction.',
+      name: 'Chicken Salad',
+      description: 'Fresh salad featuring organic tomatoes and tender chicken.',
       price: 2600,
       category: 'Salads',
       image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&q=80&w=800'
     },
     {
       id: 's2',
-      name: 'Golden Quinoa & Roast Pumpkin',
-      description: 'Ancient grains with honey-roasted pumpkin, pomegranate arils, and a citrus-honey glaze.',
+      name: 'Vegetable Salad',
+      description: 'Wholesome grains and roasted seasonal vegetables.',
       price: 2400,
       category: 'Salads',
       image: 'https://images.unsplash.com/photo-1511690743698-d9d85f2fbf38?auto=format&fit=crop&q=80&w=800'
@@ -268,23 +268,9 @@ export const SiteProvider: React.FC<{ children: React.ReactNode }> = ({ children
     {
       id: 't2',
       author: 'Sophia Rossi',
-      content: 'The dining experience was world-class. The Saffron Risotto is a must-try. A true oasis in Anuradhapura.',
+      content: 'The dining experience was world-class. The Saffron Risotto is a must try. A true oasis in Anuradhapura.',
       rating: 5,
       date: '2024-06-02'
-    },
-    {
-      id: 't3',
-      author: 'Marcus Chen',
-      content: 'The best stay I’ve had in Sri Lanka. The team anticipates your every need. Highly recommended for elite travelers.',
-      rating: 5,
-      date: '2024-06-15'
-    },
-    {
-      id: 't4',
-      author: 'Elena Gilbert',
-      content: 'Pure elegance. The Mandodari Villa is stunning and the architecture is a blend of modern and ancient history.',
-      rating: 5,
-      date: '2024-07-01'
     }
   ]);
 

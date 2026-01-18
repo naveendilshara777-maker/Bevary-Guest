@@ -1,7 +1,6 @@
-
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Coffee, Wifi, Car, ShieldCheck, Star, Quote, Hotel, Maximize2, Camera, Eye, X, Check } from 'lucide-react';
+import { ArrowRight, Coffee, Wifi, Car, ShieldCheck, Star, Quote, Hotel, Maximize2, Camera, Eye, X, Check, MapPin, Phone, Mail } from 'lucide-react';
 import { useSite } from '../context/SiteContext';
 import { Room } from '../types';
 
@@ -145,7 +144,58 @@ export const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* Testimonials Section Unchanged */}
+      {/* Estate Location & Contact Info Section - NEW */}
+      <section className="py-24 bg-[#0a0a0a]">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="bg-[#111] rounded-[3rem] border border-white/5 p-12 md:p-20 luxury-shadow reveal overflow-hidden relative">
+            <div className="absolute top-0 right-0 w-96 h-96 bg-[#C5A059]/5 blur-[100px] rounded-full"></div>
+            <div className="grid md:grid-cols-2 gap-16 md:gap-24 relative z-10">
+              <div className="space-y-10">
+                <div>
+                  <h4 className="text-[#C5A059] uppercase tracking-[0.6em] font-black text-[9px] mb-6">The Headquarters</h4>
+                  <h2 className="text-4xl md:text-5xl serif text-white leading-tight">Bevary Guest <br /><span className="italic font-medium text-[#C5A059]">Legacy Estate.</span></h2>
+                </div>
+                
+                <div className="space-y-8">
+                  <div className="flex gap-6 items-start">
+                    <MapPin className="text-[#C5A059] shrink-0 w-6 h-6" strokeWidth={1.5} />
+                    <div>
+                      <p className="text-white text-lg font-bold serif mb-2">Legacy Address</p>
+                      <p className="text-stone-400 font-light leading-relaxed">277 Godage Mawatha, 50000 Anuradhapura, Sri Lanka</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex gap-6 items-start">
+                    <Mail className="text-[#C5A059] shrink-0 w-6 h-6" strokeWidth={1.5} />
+                    <div>
+                      <p className="text-white text-lg font-bold serif mb-2">Electronic Mail</p>
+                      <p className="text-stone-400 font-light underline decoration-[#C5A059]/30 underline-offset-4">bevaryguest@gmail.com</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-[#161616] p-10 md:p-14 rounded-[2rem] border border-white/5">
+                <h4 className="text-[#C5A059] uppercase tracking-[0.4em] font-black text-[9px] mb-8 text-center">Elite Hotlines</h4>
+                <div className="space-y-8">
+                  {[
+                    { label: 'General Reservations', number: '025 222 3406' },
+                    { label: 'Concierge Direct', number: '070 222 3406' },
+                    { label: 'Executive Line', number: '077 484 7406' }
+                  ].map((phone, idx) => (
+                    <div key={idx} className="flex justify-between items-center border-b border-white/5 pb-6 last:border-0 last:pb-0 group">
+                      <span className="text-stone-500 text-[10px] font-black uppercase tracking-widest">{phone.label}</span>
+                      <a href={`tel:${phone.number.replace(/\s/g, '')}`} className="text-white font-bold text-xl serif group-hover:text-[#C5A059] transition-colors">{phone.number}</a>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
       <section className="py-16 md:py-36 bg-[#0D0D0D] overflow-hidden">
         <div className="text-center mb-16 md:mb-28 reveal px-6">
           <h4 className="text-[#C5A059] uppercase tracking-[0.7em] font-black text-[9px] mb-6 md:mb-8">Testimonials</h4>
@@ -215,7 +265,6 @@ export const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* Rest of component (CTA, Modal) remains identical */}
       {/* Final CTA */}
       <section className="py-16 md:py-48 px-6">
         <div className="max-w-[1500px] mx-auto bg-stone-950/80 backdrop-blur-3xl rounded-[2.5rem] md:rounded-[5rem] p-10 md:p-40 text-center border border-white/10 relative overflow-hidden luxury-shadow reveal">

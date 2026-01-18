@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { SiteProvider, useSite } from './context/SiteContext';
@@ -11,6 +10,7 @@ import { BookingPage } from './pages/BookingPage';
 import { Gallery } from './pages/Gallery';
 import { AdminDashboard } from './admin/Dashboard';
 import { Contact } from './pages/Contact';
+import { WhatsAppButton } from './components/WhatsAppButton';
 
 const AppContent: React.FC = () => {
   const { settings } = useSite();
@@ -67,6 +67,9 @@ const AppContent: React.FC = () => {
         </Routes>
       </main>
       {!isAdminPath && <Footer />}
+      
+      {/* Global WhatsApp Contact Entry Point */}
+      <WhatsAppButton />
     </div>
   );
 };
