@@ -1,0 +1,7 @@
+{
+  "name": "Bevar y Guest & Mandodari Villa",
+  "description": "A high-end hospitality platform for Bevar y Guest house and Mandodari Villa in Anuradhapura, featuring an immersive booking engine, dining menu, and a full-featured CMS admin dashboard.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
